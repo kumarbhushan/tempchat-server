@@ -3,7 +3,7 @@ var mongo = require('mongodb').MongoClient;
 
 
 // Establish a connection from index.html to socket.io
-var client = require('socket.io').listen(8080).sockets;
+var client = require('socket.io').listen(80).sockets;
 
 
 /*  Start a connection to the mongo database and tell server.js where to find it.
