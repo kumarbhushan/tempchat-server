@@ -3,9 +3,19 @@ var mongo = require('mongodb').MongoClient;
 
 
 // Establish a connection from index.html to socket.io
-var client = require('socket.io').listen(80).sockets;
 
+var express = require('express');
+var app = express();
 
+app.get('/', function (req, res) {
+    res.send('Hello World');
+})
+var server = app.listen(80, function () {    
+    var host = server.address().address
+    var port = server.address().port    
+    console.log("Example app listening at http://%s:%s", host, port)
+})
+var client = require('socket.io').listen(server).sockets;
 /*  Start a connection to the mongo database and tell server.js where to find it.
     Wrap the connection between the client and server inside the connection to
     the database to make the datbase connection mandatory.
