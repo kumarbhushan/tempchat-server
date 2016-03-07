@@ -6,11 +6,12 @@ var mongo = require('mongodb').MongoClient;
 
 var express = require('express');
 var app = express();
+var portnumbr=Number(process.env.Port || 8080);
 
 app.get('/', function (req, res) {
     res.send('Hello World');
 })
-var server = app.listen(80, function () {    
+var server = app.listen(portnumbrss, function () {    
     var host = server.address().address
     var port = server.address().port    
     console.log("Example app listening at http://%s:%s", host, port)
