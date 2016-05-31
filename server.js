@@ -6,12 +6,13 @@ var mongo = require('mongodb').MongoClient;
 
 var express = require('express');
 var app = express();
-var portnumbr=Number(process.env.Port || 8080);
+var ip = Number(process.env.OPENSHIFT_NODEJS_IP || 127.0.0.1);
+var portnumbr = Number(process.env.OPENSHIFT_NODEJS_PORT || 8080);
 
 app.get('/', function (req, res) {
     res.send('Hello World');
 })
-var server = app.listen(portnumbr, function () {    
+var server = app.listen(portnumbr,ip, function () {    
     var host = server.address().address
     var port = server.address().port    
     console.log("Example app listening at http://%s:%s", host, port)
@@ -223,3 +224,8 @@ mongo.connect('mongodb://kumar:123456@ds011218.mlab.com:11218/tempchat', functio
         /* END OF THIRD CODE TUTORIAL */
     });
 }); // end of mongodb conn
+/**
+ *  Define the sample application.
+ */
+
+
